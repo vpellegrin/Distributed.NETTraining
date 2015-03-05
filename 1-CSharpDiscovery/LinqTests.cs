@@ -1,5 +1,6 @@
 ﻿namespace CSharpDiscovery
 {
+    using System.Collections.Generic;
     using System.Linq;
     using NFluent;
     using NUnit.Framework;
@@ -7,31 +8,46 @@
     [TestFixture]
     public class LinqTests
     {
-        //[Test]
-        //public void UseAForeachLoopToSelectItemsStartingWithPlCaseSentitive()
-        //{
-        //    var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
-        //    var filteredItems = new List<string>();
-        //    // foreach loop to add
-        //    Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
-        //}
+        [Test]
+        public void UseAForeachLoopToSelectItemsStartingWithPlCaseSentitive()
+        {
+            var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
+            var filteredItems = new List<string>();
 
-        //[Test]
-        //public void TransformPreviousForeachLoopInALinqExpression()
-        //{
-        //    var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
-        //    // use from in/where/select LINQ syntax to the same filter as with the foreach loop
-        //    // var filteredItems = from ...
-        //    Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
-        //}
+            foreach (var item in items)
+            {
+                if (item.StartsWith("pl"))
+                {
+                    filteredItems.Add(item);
+                }
+            }
+            Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
+        }
 
-        //[Test]
-        //public void ReplacePreviousLinqExpressionWithLinqExtensionMethodsOfIEnumerable()
-        //{
-        //    var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
-        //    // use System.Linq.Enumerable extension methods
-        //    Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
-        //}
+
+        [Test]
+        public void TransformPreviousForeachLoopInALinqExpression()
+        {
+            var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
+            // use from in/where/select LINQ syntax to the same filter as with the foreach loop
+            // var filteredItems = from ...
+            var filteredItems = from item in items 
+                                where item.StartsWith("pl")
+                                select item;
+            Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
+        }
+
+        [Test]
+        public void ReplacePreviousLinqExpressionWithLinqExtensionMethodsOfIEnumerable()
+        {
+            var items = new[] { "plip", "foo", "bar", "plop", "plup", "Plap" };
+            // use System.Linq.Enumerable extension methods
+
+            // foreach loop to add
+            //var filteredItems = items.Where(item => item.StartsWith("pl")).OrderBy(x => x);
+            var filteredItems = items.Where(item => item.StartsWith("pl"));
+            Check.That(filteredItems).ContainsExactly("plip", "plop", "plup");
+        }
 
         //[Test]
         //public void UseSelectExtensionMethodToTransformFilteredItemsToUpperCase()
