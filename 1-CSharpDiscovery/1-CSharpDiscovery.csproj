@@ -47,16 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractStringCalculator.cs" />
+    <Compile Include="AnotherIntegerCalculator.cs" />
     <Compile Include="ArraysTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Calculator.cs" />
     <Compile Include="ClassesTests.cs" />
+    <Compile Include="ComposedStringCalculator.cs" />
     <Compile Include="ControlFlowTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="InheritanceAndPolymorphismTests.cs" />
+    <Compile Include="IntegerCalculator.cs" />
+    <Compile Include="ProductStrategy.cs" />
+    <Compile Include="ProductStringCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="stringCalculator.cs" />
+    <Compile Include="SumAbstractStringCalculator.cs" />
+    <Compile Include="SumStrategy.cs" />
     <Compile Include="TypesTests.cs" />
     <Compile Include="ValueTypesTests.cs" />
   </ItemGroup>

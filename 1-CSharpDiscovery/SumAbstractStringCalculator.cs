@@ -1,0 +1,28 @@
+﻿namespace CSharpDiscovery
+{
+    using System.Linq;
+
+    public class SumAbstractStringCalculator : AbstractStringCalculator
+    {
+        public override double Calculate(string sumOfTwoDoubleFromString)
+        {
+            var valuesToSum = sumOfTwoDoubleFromString.Split('+').Select(
+                s =>
+                {
+                    var value = s.Replace(" ", string.Empty);
+                    return double.Parse(value);
+                }).ToArray();
+            return this.Sum(valuesToSum);
+        }
+
+        public double Sum(double[] doubles)
+        {
+            var result = 0.0;
+            foreach (var value in doubles)
+            {
+                result += value;
+            }
+            return result;
+        }
+    }
+}
