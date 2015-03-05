@@ -68,7 +68,7 @@ namespace CSharpDiscovery
         //[Test]
         //public void DefineConstantForPi()
         //{
-        //    var sumOfADoubleAndPiConstant = "1.2 + pi";
+        //    var sumOfADoubleAndPiConstant = "1,2 + pi";
         //    // define pi constant (as double) and replace pi string with constant value
 
         //    Calculator calculator = new Calculator();
@@ -79,7 +79,7 @@ namespace CSharpDiscovery
         //[Test]
         //public void StaticReadonlyMembers()
         //{
-        //    var sumOfADoubleAndPiConstant = "1.2 + pi";
+        //    var sumOfADoubleAndPiConstant = "1,2 + pi";
         //    // replace pi constant with a static readonly member
         //    Check.That(sum).Equals(4.34);
         //}
