@@ -58,10 +58,14 @@
     <Compile Include="ControlFlowTests.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DelegatesAndEventsTests.cs" />
+    <Compile Include="ExceptionsTests.cs" />
+    <Compile Include="GenericsTests.cs" />
     <Compile Include="InheritanceAndPolymorphismTests.cs" />
     <Compile Include="IntegerCalculator.cs" />
     <Compile Include="ProductStrategy.cs" />
     <Compile Include="ProductStringCalculator.cs" />
+    <Compile Include="LinqTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="stringCalculator.cs" />
     <Compile Include="SumAbstractStringCalculator.cs" />
