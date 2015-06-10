@@ -45,5 +45,23 @@ namespace Messaging.Tests.Domain
             var expectedTimelineMessage = new TimelineMessage(messageId, authorId, publishDate, authorId, content, 1);
             Check.That(timelineMessageRepositoryFake.Messages).ContainsExactly(expectedTimelineMessage);
         }
+
+        [Test]
+        public void GivenExisingTimelineMessage_WhenHandleMessageDeleted_ThenTimelineMessageIsRemoved()
+        {
+            var authorId = new UserId();
+            var publishDate = DateTime.Now;
+            var content = "hello world";
+            var messageId = MessageId.Generate();
+            var existingTimelineMessage = new TimelineMessage(messageId, authorId, publishDate, authorId, content, 0);
+            var timelineMessageRepositoryFake = new FakeTimelineRepository();
+            timelineMessageRepositoryFake.Messages.Add(existingTimelineMessage);
+            var timelineMessageProjections = new TimelineMessageProjections(timelineMessageRepositoryFake);
+            var messageDeleted = new MessageDeleted(messageId);
+
+            timelineMessageProjections.Handle(messageDeleted);
+
+            Check.That(timelineMessageRepositoryFake.Messages).IsEmpty();
+        }
     }
 }

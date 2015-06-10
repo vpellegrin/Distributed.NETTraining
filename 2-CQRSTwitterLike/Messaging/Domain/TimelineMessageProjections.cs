@@ -23,5 +23,14 @@
                 _timelineMessageRepositoryFake.Save(timelineMessage);
             }
         }
+
+        public void Handle(MessageDeleted messageDeleted)
+        {
+
+            foreach (var timelineMessage in _timelineMessageRepositoryFake.GetById(messageDeleted.MessageId))
+            {
+                _timelineMessageRepositoryFake.Remove(timelineMessage);
+            }
+        }
     }
 }
