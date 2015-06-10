@@ -1,19 +1,25 @@
 ﻿using System;
-using Messaging.Domain;
 
-namespace Messaging.Tests.Domain
+namespace Messaging.Domain
 {
     public struct MessagePublished
     {
+        private readonly MessageId _messageId;
         private UserId _authorId;
         private DateTime _publishDate;
         private string _content;
 
-        public MessagePublished(UserId authorId, DateTime publishDate, string content)
+        public MessagePublished(MessageId messageId, UserId authorId, DateTime publishDate, string content)
         {
+            _messageId = messageId;
             _authorId = authorId;
             _publishDate = publishDate;
             _content = content;
+        }
+
+        public MessageId MessageId
+        {
+            get { return _messageId; }
         }
 
         public UserId AuthorId

@@ -1,6 +1,4 @@
-﻿using Messaging.Domain;
-
-namespace Messaging.Tests.Domain
+﻿namespace Messaging.Domain
 {
     public class TimelineMessageProjections
     {
@@ -13,7 +11,17 @@ namespace Messaging.Tests.Domain
 
         public void Handle(MessagePublished messagePublished)
         {
-            _timelineMessageRepositoryFake.Save(new TimelineMessage(messagePublished.AuthorId, messagePublished.PublishDate, messagePublished.AuthorId, messagePublished.Content, 0));
+            _timelineMessageRepositoryFake.Save(new TimelineMessage(messagePublished.MessageId, messagePublished.AuthorId, messagePublished.PublishDate, messagePublished.AuthorId, messagePublished.Content, 0));
+        }
+
+        public void Handle(MessageRepublished messageRepublished)
+        {
+            foreach (var timelineMessage in _timelineMessageRepositoryFake.GetById(messageRepublished.MessageId))
+            {
+                _timelineMessageRepositoryFake.Remove(timelineMessage);
+                timelineMessage.IncrementNbRepublish();
+                _timelineMessageRepositoryFake.Save(timelineMessage);
+            }
         }
     }
 }

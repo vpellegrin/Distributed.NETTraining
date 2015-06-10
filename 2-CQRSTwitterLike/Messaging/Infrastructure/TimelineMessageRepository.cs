@@ -30,5 +30,15 @@ namespace Messaging.Infrastructure
         {
             throw new System.NotImplementedException();
         }
+
+        public IEnumerable<TimelineMessage> GetById(MessageId messageId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Remove(TimelineMessage timelineMessage)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

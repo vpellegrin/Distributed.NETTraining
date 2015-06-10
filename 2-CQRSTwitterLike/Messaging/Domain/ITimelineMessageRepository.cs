@@ -7,5 +7,9 @@ namespace Messaging.Domain
         IEnumerable<TimelineMessage> GetLastMessagesForUser(UserId userId, int i);
         
         void Save(TimelineMessage timelineMessage);
+        
+        IEnumerable<TimelineMessage> GetById(MessageId messageId);
+        
+        void Remove(TimelineMessage timelineMessage);
     }
 }

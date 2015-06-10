@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Messaging.Domain;
 
 namespace Messaging.Tests.Domain
@@ -15,6 +16,16 @@ namespace Messaging.Tests.Domain
         public void Save(TimelineMessage timelineMessage)
         {
             Messages.Add(timelineMessage);
+        }
+
+        public IEnumerable<TimelineMessage> GetById(MessageId messageId)
+        {
+            return Messages.Where(x => x.MessageId.Equals(messageId)).ToList();
+        }
+
+        public void Remove(TimelineMessage timelineMessage)
+        {
+            Messages.Remove(timelineMessage);
         }
     }
 }
