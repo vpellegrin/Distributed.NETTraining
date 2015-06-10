@@ -25,5 +25,10 @@ namespace Messaging.Infrastructure
                 .OrderByDescending(x => x.PublishDate)
                 .Take(i);
         }
+
+        public void Save(TimelineMessage timelineMessage)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
